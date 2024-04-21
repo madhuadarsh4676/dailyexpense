@@ -1,0 +1,14 @@
+.expense-chart {
+  max-width: 400px; /* Adjust the maximum width of the chart container */
+  margin: 0 auto; /* Center the chart horizontally */
+}
+
+.chart-title {
+  text-align: center; /* Center align the chart title */
+}
+
+.error-message {
+  color: red; /* Set color for error message */
+}
+
+/* Optional: Add more custom styling for your chart container if needed */

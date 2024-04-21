@@ -1,0 +1,57 @@
+/* Styling for the overall bank account list container */
+.bank-account-list {
+  width: 80%; /* Adjust width as needed */
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Styling for the table */
+.bank-account-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Styling for table headers */
+.bank-account-list table th {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+  background-color: #f2f2f2;
+}
+
+/* Styling for table cells */
+.bank-account-list table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Styling for the header */
+.bank-account-list h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Adjustment for empty list message */
+.bank-account-list p:last-child {
+  margin-bottom: 0;
+}
+.Home {
+  position: fixed;
+  top: 20px; /* Adjust this value to set the distance from the top */
+  width: 150px;
+  right: 150px;
+
+  padding: 10px 20px;
+  background-color: #007bff; /* Adjust the color as needed */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Home:hover {
+  background-color: #0056b3; /* Adjust the hover color as needed */
+}

@@ -1,0 +1,116 @@
+/* Styles for the contact page */
+.contact {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+
+/* Styles for the contact heading */
+.contact h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Styles for sections within the contact page */
+.contact-info,
+.social-links,
+.contact-form {
+  margin-bottom: 20px;
+}
+
+/* Styles for contact information paragraphs */
+.contact-info p {
+  margin-bottom: 5px;
+}
+
+/* Styles for links within contact information */
+.contact-info a {
+  color: #1e6ef0;
+  text-decoration: none;
+}
+
+/* Styles for social links section */
+.social-links {
+  display: flex;
+  justify-content: space-around; /* Center links horizontally */
+}
+
+/* Styles for individual social links */
+.social-links a {
+  color: inherit;
+  font-size: 20px;
+  margin: 0 10px;
+}
+
+/* Hover effect for social links */
+.social-links a:hover {
+  color: #007bff;
+}
+
+/* Styles for the contact form section */
+.contact-form {
+  display: flex;
+  flex-direction: column; /* Stack form elements vertically */
+}
+
+/* Styles for the form itself */
+.contact-form form {
+  display: flex; /* Allow form elements to wrap if needed */
+  flex-wrap: wrap;
+  margin: 0 -10px; /* Remove default margin from form elements */
+}
+
+/* Styles for form input fields and textarea */
+.contact-form input,
+.contact-form textarea {
+  width: 100%; /* Make form elements full width */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Styles for the textarea element */
+.contact-form textarea {
+  height: 100px; /* Set a fixed height for textarea */
+}
+
+/* Styles for the submit button */
+.contact-form button {
+  background-color: #87c2e4;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 10px; /* Add some margin to the right */
+}
+
+/* Hover effect for the submit button */
+.contact-form button:hover {
+  background-color: #3ea6e3;
+}
+
+/* Styles for the "Home" button (assuming class name is 'CHome') */
+.CHome {
+  background-color: #ddd; /* Light gray background */
+  color: #a8c3f0; /* Dark gray text */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Hover effect for the "Home" button */
+.CHome:hover {
+  background-color: #77a5f4;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .contact-form form {
+    flex-direction: column; /* Stack form elements on small screens */
+  }
+}
