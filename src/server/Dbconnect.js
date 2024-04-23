@@ -104,7 +104,7 @@ const BankAccount = mongoose.model("BankAccount", bankAccountSchema);
 // });
 
 // POST route for login
-app.post("/", async (req, res) => {
+app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
