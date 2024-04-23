@@ -99,12 +99,12 @@ const bankAccountSchema = new mongoose.Schema({
 const BankAccount = mongoose.model("BankAccount", bankAccountSchema);
 
 // Routes
-app.get("/", (req, res) => {
-  res.send("Welcome to the Daily Expenses API");
-});
+// app.get("/", (req, res) => {
+//   res.send("Welcome to the Daily Expenses API");
+// });
 
 // POST route for login
-app.post("/login", async (req, res) => {
+app.post("/", async (req, res) => {
   const { email, password } = req.body;
 
   try {
