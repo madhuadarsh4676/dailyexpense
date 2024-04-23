@@ -125,11 +125,14 @@ function AddExpense() {
       // const userId = user._id;
 
       // Send request to create expense with user id
-      const response = await axios.post("http://localhost:5000/api/expenses", {
-        category,
-        amount,
-        user: user_id, // Include user id in the request
-      });
+      const response = await axios.post(
+        "https://dailyexpenses-b16357ac6f5b.herokuapp.com/expenses",
+        {
+          category,
+          amount,
+          user: user_id, // Include user id in the request
+        }
+      );
 
       console.log("Expense created:", response.data);
       setExpenseCount((prevCount) => prevCount + 1);
