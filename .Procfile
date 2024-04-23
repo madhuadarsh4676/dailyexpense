@@ -1,1 +1,1 @@
-web = node DbConnect.js
+web = node src/server/DbConnect.js
