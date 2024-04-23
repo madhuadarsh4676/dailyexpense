@@ -11,6 +11,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("dist"));
+// }
+
+// HTTP request logger
+// app.use(morgan("tiny"));
+// app.use("/api", routes);
+
 // Connect to MongoDB
 // const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/Expense";
 const uri =
