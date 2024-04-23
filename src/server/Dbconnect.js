@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
 import express from "express";
 import cors from "cors";
-// import autoIncrement from "mongoose-auto-increment";
+import dotenv from "dotenv";
 
+dotenv.config();
+// console.log(process.env);
 const app = express();
 
 // Middleware
@@ -10,8 +12,13 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
+// const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/Expense";
+const uri =
+  process.env.MONGODB_URI ||
+  "mongodb+srv://madhuadarsh4676:Passcode%401998@cluster0.pztnyqt.mongodb.net/Expense?retryWrites=true&w=majority&appName=Cluster0";
+
 mongoose
-  .connect("mongodb://localhost:27017/Expense", {
+  .connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -21,18 +28,6 @@ mongoose
   .catch((error) => {
     console.log("Failed to connect to MongoDB:", error);
   });
-
-// Create a mongoose connection
-const connection = mongoose.createConnection(
-  "mongodb://localhost:27017/Expense",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
-
-// Initialize auto-increment
-// autoIncrement.initialize(connection);
 
 // Define schemas and models
 
@@ -102,27 +97,21 @@ app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Find the user with the provided email
     const user = await Login.findOne({ email: email });
 
-    // If user exists
     if (user) {
-      // Check if the provided password matches the stored password
       if (user.password === password) {
-        // Password matches, authentication successful
         res.json({
           success: true,
           userId: user._id,
           full_name: user.full_name,
-        }); // Include userId in response
+        });
       } else {
-        // Password does not match
         res
           .status(401)
           .json({ success: false, message: "Invalid credentials" });
       }
     } else {
-      // User not found
       res.status(404).json({ success: false, message: "User not found" });
     }
   } catch (error) {
@@ -136,7 +125,6 @@ app.post("/api/create", async (req, res) => {
   const { full_name, email, password, confirm_password } = req.body;
 
   try {
-    // Create a new document using the Login model
     const newDocument = new Login({
       full_name,
       email,
@@ -144,10 +132,8 @@ app.post("/api/create", async (req, res) => {
       confirm_password,
     });
 
-    // Save the new document to the database
     await newDocument.save();
 
-    // Send response indicating successful creation
     res
       .status(201)
       .json({ message: "Document created successfully", data: newDocument });
@@ -162,7 +148,6 @@ app.post("/api/expenses", async (req, res) => {
   const { category, amount, user } = req.body;
 
   try {
-    // Validate data (optional, can be improved)
     if (
       !category ||
       !amount ||
@@ -186,15 +171,13 @@ app.post("/api/expenses", async (req, res) => {
 });
 
 app.get("/api/expenses/:userId", async (req, res) => {
-  const userId = req.params.userId; // Retrieve userId from query parameters
+  const userId = req.params.userId;
 
   try {
     let expenses;
     if (userId) {
-      // If userId is provided, filter expenses based on userId
       expenses = await Expense.find({ user: userId });
     } else {
-      // If userId is not provided, fetch all expenses
       expenses = await Expense.find();
     }
     res.json(expenses);
@@ -208,11 +191,8 @@ app.get("/api/expenses/:userId", async (req, res) => {
 app.get("/api/expenses/sum/:userId", async (req, res) => {
   try {
     const userId = req.params.userId;
-    // console.log(userId);
-    // Query expenses for the specified user ID
     const expenses = await Expense.find({ user: userId });
 
-    // Calculate the sum of amounts
     const totalAmount = expenses.reduce(
       (sum, expense) => sum + expense.amount,
       0
@@ -227,24 +207,20 @@ app.get("/api/expenses/sum/:userId", async (req, res) => {
 
 app.post("/api/bank-accounts", async (req, res) => {
   try {
-    // Extract data from the request body including user_id
     const { name, bankName, accountNumber, amount, accountType, user_id } =
       req.body;
 
-    // Create a new bank account instance
     const newBankAccount = new BankAccount({
       name,
       bankName,
       accountNumber,
       amount,
       accountType,
-      user: user_id, // Associate user_id with the bank account
+      user: user_id,
     });
 
-    // Save the new bank account to the database
     await newBankAccount.save();
 
-    // Respond with the newly created bank account
     res.status(201).json(newBankAccount);
   } catch (error) {
     console.error("Error adding bank account:", error);
@@ -254,18 +230,13 @@ app.post("/api/bank-accounts", async (req, res) => {
 
 app.get("/api/bank-accounts/:userId", async (req, res) => {
   try {
-    // Extract userId from route parameters
     const userId = req.params.userId;
-
-    // Check if userId is provided
     if (!userId) {
       return res.status(400).send("User ID is required");
     }
 
-    // Find bank accounts associated with the provided userId
     const bankAccounts = await BankAccount.find({ user: userId });
 
-    // Respond with the list of bank accounts
     res.json(bankAccounts);
   } catch (error) {
     console.error("Error fetching bank accounts:", error);
@@ -274,14 +245,9 @@ app.get("/api/bank-accounts/:userId", async (req, res) => {
 });
 
 // GET method to fetch only amount
-// Route to handle fetching the account balance for a specific user
-// Assuming you have already defined your BankAccount model and set up your Express app
-
 app.get("/api/bank-accounts/amount/:userId", async (req, res) => {
   try {
     const userId = req.params.userId;
-
-    // Query bank accounts for the specified user ID
     const userBankAccounts = await BankAccount.find({ user: userId });
 
     if (!userBankAccounts || userBankAccounts.length === 0) {
@@ -290,7 +256,6 @@ app.get("/api/bank-accounts/amount/:userId", async (req, res) => {
         .json({ error: "No bank accounts found for the user" });
     }
 
-    // Calculate the total balance across all bank accounts
     let totalBalance = 0;
     userBankAccounts.forEach((account) => {
       const amount = parseFloat(account.amount);
@@ -301,7 +266,7 @@ app.get("/api/bank-accounts/amount/:userId", async (req, res) => {
       }
     });
 
-    res.json({ accountBalance: totalBalance }); // Corrected the key name to match frontend
+    res.json({ accountBalance: totalBalance });
   } catch (error) {
     console.error("Error fetching account balance:", error);
     res.status(500).json({ error: "Server Error" });
