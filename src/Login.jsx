@@ -13,10 +13,13 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://dailyexpenses-b16357ac6f5b.herokuapp.com/login",
+        {
+          email,
+          password,
+        }
+      );
 
       console.log("Response data:", response.data);
 
