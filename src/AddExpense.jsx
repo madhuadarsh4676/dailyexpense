@@ -123,7 +123,7 @@ function AddExpense() {
       // Get user id from session storage
       const user_id = JSON.parse(sessionStorage.getItem("user"))._id;
       // const userId = user._id;
-
+      console.log(user_id);
       // Send request to create expense with user id
       const response = await axios.post(
         "https://dailyexpenses-b16357ac6f5b.herokuapp.com/api/expenses",
