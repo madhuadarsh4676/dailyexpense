@@ -141,14 +141,17 @@ function AddAccount() {
     try {
       const { name, bankName, accountNumber, amount, accountType } = formData;
       const user_id = JSON.parse(sessionStorage.getItem("user"))._id;
-      const res = await axios.post("http://localhost:5000/api/bank-accounts", {
-        name,
-        bankName,
-        accountNumber,
-        amount,
-        accountType,
-        user_id,
-      });
+      const res = await axios.post(
+        "https://dailyexpenses-b16357ac6f5b.herokuapp.com/api/bank-accounts",
+        {
+          name,
+          bankName,
+          accountNumber,
+          amount,
+          accountType,
+          user_id,
+        }
+      );
       console.log("New bank account:", res.data);
       // Reset form after successful submission
       setFormData(initialFormData);

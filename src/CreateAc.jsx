@@ -104,12 +104,15 @@ function CreateAc() {
   async function submit(e) {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/create", {
-        full_name,
-        email,
-        password,
-        confirm_password,
-      });
+      const res = await axios.post(
+        "https://dailyexpenses-b16357ac6f5b.herokuapp.com/api/create",
+        {
+          full_name,
+          email,
+          password,
+          confirm_password,
+        }
+      );
 
       if (
         res.status === 201 &&
