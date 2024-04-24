@@ -69,72 +69,70 @@
 
 /* Home.css */
 
-@media only screen and (max-width: 600px){
-  
-}
+@media only screen and (max-width: 600px) {
+  /* Hamburger button */
+  .hamburger-btn {
+    background: transparent;
+    border: none;
+    color: #000;
+    font-size: 24px;
+    cursor: pointer;
+  }
 
-/* Hamburger button */
-.hamburger-btn {
-  background: transparent;
-  border: none;
-  color: #000;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-/* Side menu */
-aside {
-  position: fixed;
-  top: 0;
-  left: -250px; /* Initially hidden off the screen */
-  width: 200px;
-  height: 100%;
-  top: 9px;
-  /* background: #333; */
-  /* background-image: linear-gradient(
+  /* Side menu */
+  aside {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initially hidden off the screen */
+    width: 200px;
+    height: 100%;
+    top: 9px;
+    /* background: #333; */
+    /* background-image: linear-gradient(
     to right,
     rgb(216, 145, 223),
     rgb(159, 183, 91)
   ); */
-  background-color: rgb(238, 232, 243);
-  transition: left 0.3s ease; /* Transition for smooth animation */
-  z-index: 1000; /* Ensure it overlays other content */
-}
+    background-color: rgb(238, 232, 243);
+    transition: left 0.3s ease; /* Transition for smooth animation */
+    z-index: 1000; /* Ensure it overlays other content */
+  }
 
-/* When menu is open, move it to the left to reveal */
-aside.menu-open {
-  left: 0;
-}
+  /* When menu is open, move it to the left to reveal */
+  aside.menu-open {
+    left: 0;
+  }
 
-nav ul {
-  list-style-type: none;
-  padding: 0;
-}
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
 
-nav ul li {
-  padding: 10px;
-  border-bottom: 1px solid #555;
-}
+  nav ul li {
+    padding: 10px;
+    border-bottom: 1px solid #555;
+  }
 
-header {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 1001; /* Ensure header overlays the menu */
-}
-/* Home.css */
+  header {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1001; /* Ensure header overlays the menu */
+  }
+  /* Home.css */
 
-/* Hamburger button */
-.hamburger-btn {
-  background: transparent;
-  border: none;
-  color: #0d61d5;
-  font-size: 24px;
-  cursor: pointer;
-  transition: transform 0.3s ease; /* Transition for smooth transformation */
-}
+  /* Hamburger button */
+  .hamburger-btn {
+    background: transparent;
+    border: none;
+    color: #0d61d5;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Transition for smooth transformation */
+  }
 
-/* When menu is open, rotate the hamburger icon to cross (X) */
-.hamburger-btn.open {
-  transform: rotate(90deg);
+  /* When menu is open, rotate the hamburger icon to cross (X) */
+  .hamburger-btn.open {
+    transform: rotate(90deg);
+  }
 }
