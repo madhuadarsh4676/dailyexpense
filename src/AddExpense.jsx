@@ -126,7 +126,7 @@ function AddExpense() {
 
       // Send request to create expense with user id
       const response = await axios.post(
-        "https://dailyexpenses-b16357ac6f5b.herokuapp.com/api/expenses/:userId",
+        "https://dailyexpenses-b16357ac6f5b.herokuapp.com/api/expenses/${user_id}",
         {
           category,
           amount,
