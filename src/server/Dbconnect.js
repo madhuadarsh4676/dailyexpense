@@ -36,6 +36,10 @@ mongoose
   .catch((error) => {
     console.log("Failed to connect to MongoDB:", error);
   });
+const connection = mongoose.createConnection(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // Define schemas and models
 
