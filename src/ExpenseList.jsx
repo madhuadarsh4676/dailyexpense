@@ -18,7 +18,7 @@ function ExpenseList() {
         const user = JSON.parse(sessionStorage.getItem("user"));
         console.log(user._id);
         const response = await fetch(
-          `http://localhost:5000/api/expenses/${user._id}`
+          `https://dailyexpenses-b16357ac6f5b.herokuapp.com/api/expenses/${user._id}`
         );
         const data = await response.json();
         console.log(data);

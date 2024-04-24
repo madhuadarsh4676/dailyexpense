@@ -21,7 +21,7 @@ function AccountList() {
         const userId = user._id;
 
         const response = await axios.get(
-          `http://localhost:5000/api/bank-accounts/${userId}`
+          `https://dailyexpenses-b16357ac6f5b.herokuapp.com/api/bank-accounts/${userId}`
         );
         setBankAccounts(response.data);
         setLoading(false);

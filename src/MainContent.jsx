@@ -153,12 +153,12 @@ function MainContent({ expenseCount }) {
 
         // Fetch total expenses based on user ID
         const totalAmountResponse = fetch(
-          `http://localhost:5000/api/expenses/sum/${user_id}`
+          `https://dailyexpenses-b16357ac6f5b.herokuapp.com/api/expenses/sum/${user_id}`
         );
 
         // Fetch account balance based on user ID
         const accountBalanceResponse = fetch(
-          `http://localhost:5000/api/bank-accounts/amount/${user_id}`
+          `https://dailyexpenses-b16357ac6f5b.herokuapp.com/api/bank-accounts/amount/${user_id}`
         );
 
         const [totalAmountRes, accountBalanceRes] = await Promise.all([
