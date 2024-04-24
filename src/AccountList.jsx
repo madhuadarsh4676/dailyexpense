@@ -19,7 +19,7 @@ function AccountList() {
         // Assuming you have the user's identifier stored in sessionStorage
         const user = JSON.parse(sessionStorage.getItem("user"));
         const userId = user._id;
-
+        console.log(userId);
         const response = await axios.get(
           `https://dailyexpenses-b16357ac6f5b.herokuapp.com/api/bank-accounts/${userId}`
         );
